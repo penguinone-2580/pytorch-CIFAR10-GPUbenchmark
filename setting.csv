@@ -1,0 +1,2 @@
+﻿model_name,base_log_path,data_path,batch_size,learning_rate,momentum,weight_decay,epochs,num_workers,pin_memory
+VGG,./logs,../../datasets,64,0.001,0.9,1.00E-06,30,0,TRUE
