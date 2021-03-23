@@ -44,6 +44,7 @@ class Trainer:
         print("")
         torch.backends.cudnn.benchmark = True
         scaler = torch.cuda.amp.GradScaler()
+        torch.cuda.synchronize()
         start_time = time.time()
 
         with tqdm(range(self.epochs)) as progress_bar:
@@ -96,6 +97,7 @@ class Trainer:
 
                 progress_bar.set_postfix({"loss":epoch_loss, "accuracy": epoch_acc.item(), "val_loss":val_epoch_loss, "val_accuracy": val_epoch_acc.item()})
 
+        torch.cuda.synchronize()
         end_time = time.time() - start_time
         print("")
         print("Train ended")
